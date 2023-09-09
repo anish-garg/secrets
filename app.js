@@ -30,7 +30,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://127.0.0.1:27017/userDB", { useNewUrlParser: true })
+mongoose.connect("mongodb+srv://anishgarg5914:6hM5dZNPWrdqf4p0@cluster0.pvmyfqh.mongodb.net/userDB", { useNewUrlParser: true })
 
 const userSchema = new mongoose.Schema({
     email: String,
@@ -64,7 +64,7 @@ passport.serializeUser(function (user, cb) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/secrets"
+    callbackURL: "https://secrets-uzcf.onrender.com/auth/google/secrets"
 },
     function (accessToken, refreshToken, profile, cb) {
         User.findOrCreate({ googleId: profile.id }, function (err, user) {
